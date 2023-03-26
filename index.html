@@ -1,22 +1,49 @@
 <!DOCTYPE html>
 <html>
 <head>
+
+    <script>
+        function getParameterByName(name, url = window.location.href) {
+            name = name.replace(/[\[\]]/g, '\\$&');
+            const regex = new RegExp('[?&]' + name + '(=([^&#]*)|&|#|$)');
+            const results = regex.exec(url);
+            if (!results) return null;
+            if (!results[2]) return '';
+            return decodeURIComponent(results[2].replace(/\+/g, ' '));
+        }
+    </script>
+
     <script src="aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="aframe-extras.min.js"></script>
+
 </head>
+
 <body style="margin: 0; overflow: hidden;">
+
+<script>
+    const modelNumber = getParameterByName('model');
+    if (modelNumber) {
+        const modelUrl = `Skull_${modelNumber}.gltf`;
+        const modelEntity = document.getElementById('SkullAR');
+        modelEntity.setAttribute('gltf-model', modelUrl);
+    } else {
+        // Handle the case where the model parameter is not provided
+        console.error('Model number not provided in URL');
+    }
+</script>
+    
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
-        <a-entity light="color: #121212; angle: 90; castShadow: true; shadowCameraNear: 0.52; groundColor: #ffffff; distance: 5" position="1.126 1.533 0.912" data-aframe-default-light="" aframe-injected=""></a-entity>
-        <a-entity light="intensity: 1.4; castShadow: true; angle: 90; groundColor: #ffffff; distance: 2; shadowRadius: 1.43" position="-1.28813 1.57126 0.33699" data-aframe-default-light="" aframe-injected="" scale="5 5 5" visible=""></a-entity>
         <a-entity
-            gltf-model="Skull4543.gltf"
+            id="SkullAR"
+            gltf-model="#"
             scale="0.02 0.02 0.002"
             position=""
-            rotation="0 180 0"
-            animation-mixer="clip: Walk 01">
+            rotation=""
+            animation-mixer="">
         </a-entity>
-        <a-entity camera position="0 1.1 8"></a-entity>
+        <a-entity camera position="0 1.1 2"></a-entity>
     </a-scene>
+    
 </body>
 </html>
