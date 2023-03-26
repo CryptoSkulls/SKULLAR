@@ -24,7 +24,7 @@
 <script>
     const modelNumber = getParameterByName('model');
     if (modelNumber) {
-        const modelUrl = `Models/{modelNumber}.gltf`;
+        const modelUrl = `Models/${modelNumber}.gltf`;
         const modelEntity = document.getElementById('SKULLAR');
         modelEntity.setAttribute('gltf-model', modelUrl);
     } else {
