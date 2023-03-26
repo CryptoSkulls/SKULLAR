@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html>
 <head>
-
     <script>
         function getParameterByName(name, url = window.location.href) {
             name = name.replace(/[\[\]]/g, '\\$&');
@@ -16,23 +15,8 @@
     <script src="aframe.min.js"></script>
     <script src="aframe-ar.js"></script>
     <script src="aframe-extras.min.js"></script>
-
 </head>
-
 <body style="margin: 0; overflow: hidden;">
-
-<script>
-    const modelNumber = getParameterByName('model');
-    if (modelNumber) {
-        const modelUrl = `Models/${modelNumber}.gltf`;
-        const modelEntity = document.getElementById('SKULLAR');
-        modelEntity.setAttribute('gltf-model', modelUrl);
-    } else {
-        // Handle the case where the model parameter is not provided
-        console.error('Model number not provided in URL');
-    }
-</script>
-    
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
         <a-entity
             id="SKULLAR"
@@ -45,5 +29,16 @@
         <a-entity camera position="0 1.1 2"></a-entity>
     </a-scene>
     
+    <script>
+        const modelNumber = getParameterByName('model');
+        if (modelNumber) {
+            const modelUrl = `Models/${modelNumber}.gltf`;
+            const modelEntity = document.getElementById('SKULLAR');
+            modelEntity.setAttribute('gltf-model', modelUrl);
+        } else {
+            // Handle the case where the model parameter is not provided
+            console.error('Model number not provided in URL');
+        }
+    </script>
 </body>
 </html>
