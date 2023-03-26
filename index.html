@@ -24,8 +24,8 @@
 <script>
     const modelNumber = getParameterByName('model');
     if (modelNumber) {
-        const modelUrl = `Skull_${modelNumber}.gltf`;
-        const modelEntity = document.getElementById('SkullAR');
+        const modelUrl = `Models/Skull_${modelNumber}.gltf`;
+        const modelEntity = document.getElementById('SKULLAR');
         modelEntity.setAttribute('gltf-model', modelUrl);
     } else {
         // Handle the case where the model parameter is not provided
@@ -35,7 +35,7 @@
     
     <a-scene embedded arjs="sourceType: webcam; debugUIEnabled: false;">
         <a-entity
-            id="SkullAR"
+            id="SKULLAR"
             gltf-model="#"
             scale="0.02 0.02 0.002"
             position=""
